@@ -1,0 +1,33 @@
+ ext{
+
+    versions = [
+            hilt : "2.44",
+            material: "1.7.0",
+            appCompat: "1.7.0",
+            core_ktx : "1.9.0",
+            junit_test: "4.13.2",
+            android_junit_test : "1.1.4",
+            espresso: "3.5.0",
+            compile_sdk : 33,
+            target_sdk : 33
+    ]
+     hilt_dagger = [
+             hilt_lib : "com.google.dagger:hilt-android:${versions.hilt}",
+             hilt_compiler : "com.google.dagger:hilt-compiler:${versions.hilt}"
+     ]
+     androidx = [
+             appCompat : "com.google.android.material:material:${versions.appCompat}",
+             constraintLayout : "",
+             material : "com.google.android.material:material:${versions.material}"
+
+     ]
+     ktx = [
+             core_ktx : "androidx.core:core-ktx:${versions.core_ktx}"
+     ]
+
+     test = [
+             junit_test : "junit:junit:${versions.junit_test}",
+             android_junit_test: "androidx.test.ext:junit:${versions.android_junit_test}",
+             espresso : "androidx.test.espresso:espresso-core:${versions.espresso}"
+     ]
+ }

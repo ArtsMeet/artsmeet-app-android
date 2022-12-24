@@ -8,6 +8,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import kotlin.reflect.KClass
 
+/**
+ * Extend this class to create an activity instead of Android SDK classes
+ */
 abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>(
     private val bindingInflater: (LayoutInflater) -> VB,
     private val vmKClass: KClass<VM>

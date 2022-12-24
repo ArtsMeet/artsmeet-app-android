@@ -3,7 +3,9 @@ package com.artsmeet.app.authentication
 import com.artsmeet.app.authentication.databinding.ActivityAuthenticationBinding
 import com.artsmeet.app.base.androidBaseComponent.BaseActivity
 import com.artsmeet.app.base.androidBaseComponent.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthenticationActivity : BaseActivity<ActivityAuthenticationBinding,BaseViewModel>(
     ActivityAuthenticationBinding::inflate,
     BaseViewModel::class

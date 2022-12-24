@@ -1,7 +1,10 @@
 package com.artsmeet.app.base.androidBaseComponent
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-open class BaseViewModel: ViewModel() {
+@HiltViewModel
+open class BaseViewModel @Inject constructor(): ViewModel() {
 
 }
