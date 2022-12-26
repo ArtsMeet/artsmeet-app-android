@@ -46,6 +46,8 @@ dependencies {
     implementation ktx.core_ktx
     implementation androidx.appCompat
     implementation androidx.material
+    implementation androidx.navigation_ktx
+    implementation androidx.navigation_ui_ktx
     implementation project(path: ':base')
     testImplementation test.junit_test
     //Hilt

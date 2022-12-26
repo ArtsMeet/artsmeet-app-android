@@ -48,10 +48,12 @@ dependencies {
     implementation ktx.core_ktx
     implementation androidx.appCompat
     implementation androidx.material
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation androidx.constraintLayout
+    implementation androidx.navigation_ktx
+    implementation androidx.navigation_ui_ktx
     testImplementation test.junit_test
     implementation project(path : ':authentication')
+    implementation project(path : ':base')
     //Hilt
     implementation hilt_dagger.hilt_lib
     kapt hilt_dagger.hilt_compiler

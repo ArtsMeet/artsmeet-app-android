@@ -18,23 +18,22 @@ abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>(
 
     private var binding: VB? = null
 
-    private val viewModel:VM by lazy {
-        ViewModelProvider(this)[vmKClass.java]
-    }
+    private var viewModel:VM? = null
 
     companion object{
         private const val ON_CREATE = "ON_CREATE"
     }
 
-    //Making the onCreate final to enforce the use of other functions
-    final override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(javaClass.simpleName, ON_CREATE)
+        viewModel = ViewModelProvider(this)[vmKClass.java]
         binding = bindingInflater.invoke(layoutInflater)
+        setContentView(binding!!.root)
         setupViews(binding!!)
-        setupViews(binding!!, viewModel)
-        observe(viewModel)
-        observeForever(viewModel)
+        setupViews(binding!!, viewModel!!)
+        observe(viewModel!!)
+        observeForever(viewModel!!)
     }
 
     /**
@@ -43,6 +42,13 @@ abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>(
      * @exception ClassCastException In case, it is called before activity is created
      */
     fun getBinding() = binding as VB
+
+    /**
+     * This function is used for retrieving the viewModel anywhere in the fragment
+     * after it is initialized as non-nullable object
+     * @exception ClassCastException In case, it is called before fragment is created
+     */
+    fun getViewModel() = viewModel as VM
 
     /**
      * This is function is used for initializing the views
@@ -64,7 +70,7 @@ abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>(
      * It is called after the setupView()
      * @see setupViews
      */
-    abstract fun observe(vm:VM)
+    open fun observe(vm:VM) {}
 
     open fun observeForever(vm: VM){}
 

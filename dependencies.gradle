@@ -3,23 +3,26 @@
     versions = [
             hilt : "2.44",
             material: "1.7.0",
-            appCompat: "1.7.0",
+            appCompat: "1.5.1",
             core_ktx : "1.9.0",
             junit_test: "4.13.2",
             android_junit_test : "1.1.4",
             espresso: "3.5.0",
             compile_sdk : 33,
-            target_sdk : 33
+            target_sdk : 33,
+            navigation_component : "2.5.3",
+            constraintLayout: "2.1.4"
     ]
      hilt_dagger = [
              hilt_lib : "com.google.dagger:hilt-android:${versions.hilt}",
              hilt_compiler : "com.google.dagger:hilt-compiler:${versions.hilt}"
      ]
      androidx = [
-             appCompat : "com.google.android.material:material:${versions.appCompat}",
-             constraintLayout : "",
-             material : "com.google.android.material:material:${versions.material}"
-
+             appCompat : "androidx.appcompat:appcompat:${versions.appCompat}",
+             constraintLayout : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+             material : "com.google.android.material:material:${versions.material}",
+             navigation_ktx : "androidx.navigation:navigation-fragment-ktx:${versions.navigation_component}",
+             navigation_ui_ktx : "androidx.navigation:navigation-ui-ktx:${versions.navigation_component}"
      ]
      ktx = [
              core_ktx : "androidx.core:core-ktx:${versions.core_ktx}"

@@ -10,3 +10,4 @@ inline  fun <VB:ViewDataBinding> AppCompatActivity.viewBinding(
     lazy(LazyThreadSafetyMode.NONE) {
         bindingInflater.invoke(layoutInflater)
     }
+
