@@ -15,5 +15,6 @@ class EmailPasswordLoginRepositoryImpl @Inject constructor(
 }
 
 data class EmailPasswordLoginData(
-    val data:String
+    val email:String,
+    val password:String
 ):LoginData

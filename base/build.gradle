@@ -46,6 +46,7 @@ dependencies {
     testImplementation test.junit_test
     implementation androidx.navigation_ktx
     implementation androidx.navigation_ui_ktx
+    implementation firebase.auth
     //Hilt
     implementation hilt_dagger.hilt_lib
     kapt hilt_dagger.hilt_compiler
