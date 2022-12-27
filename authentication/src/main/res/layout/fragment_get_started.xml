@@ -11,7 +11,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:foreground="@drawable/gradinet_black_white"
-            tools:src="@tools:sample/avatars"/>
+            />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="@dimen/dimen_0dp"
@@ -34,14 +34,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButton"
-            style="@style/ArtsMeetFilledButton"
             android:layout_width="@dimen/dimen_0dp"
+            style="@style/ArtsMeetFilledButton"
             android:layout_height="@dimen/dimen_52dp"
             android:layout_marginHorizontal="@dimen/dimen_15dp"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:icon="@tools:sample/avatars"
-            tools:iconSize="@dimen/dimen_20dp"
             android:layout_marginBottom="@dimen/dimen_20dp"
             app:layout_constraintStart_toStartOf="parent" />
 
