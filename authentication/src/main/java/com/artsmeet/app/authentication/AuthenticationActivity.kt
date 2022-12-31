@@ -1,8 +1,11 @@
 package com.artsmeet.app.authentication
 
+import android.content.Context
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.navigation.fragment.NavHostFragment
 import com.artsmeet.app.authentication.databinding.ActivityAuthenticationBinding
-import com.artsmeet.app.base.androidBaseComponent.BaseActivity
+import com.artsmeet.app.core.androidBaseComponent.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,5 +31,16 @@ class AuthenticationActivity : BaseActivity<ActivityAuthenticationBinding,Authen
         val navController = (supportFragmentManager.findFragmentById(R.id.fragment_container)
                 as NavHostFragment).navController
         navController.graph = navController.navInflater.inflate(navGraph)
+    }
+
+    companion object : ActivityResultContract<Boolean,Boolean>(){
+        override fun createIntent(context: Context, input: Boolean): Intent {
+            return Intent(context,AuthenticationActivity::class.java)
+        }
+
+        override fun parseResult(resultCode: Int, intent: Intent?): Boolean {
+            return resultCode == RESULT_OK
+        }
+
     }
 }

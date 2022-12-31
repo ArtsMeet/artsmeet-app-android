@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.artsmeet.app.splash'
+    compileSdk versions.compile_sdk
+
+    defaultConfig {
+        minSdk versions.min_sdk
+        targetSdk versions.target_sdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding {
+            enabled true
+        }
+        dataBinding {
+            enabled true
+        }
+    }
+}
+
+dependencies {
+
+    //Core dependency
+    implementation ktx.core_ktx
+    implementation androidx.appCompat
+    implementation androidx.material
+    implementation androidx.constraintLayout
+
+    //Project dependency
+    implementation project(path : ':core')
+    implementation project(path : ':authentication')
+
+    //hilt-dagger
+    implementation hilt_dagger.hilt_lib
+    kapt hilt_dagger.hilt_compiler
+
+    //testing dependency
+    testImplementation test.junit_test
+    androidTestImplementation test.android_junit_test
+    androidTestImplementation test.espresso
+}
