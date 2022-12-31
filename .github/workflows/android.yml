@@ -24,6 +24,12 @@ jobs:
       run: ./gradlew build
     - name: Build debug APK
       run: bash ./gradlew assembleDebug --stacktrace
+    - name: Upload to slack
+      uses: adrey/slack-file-upload-action@master
+      with:
+        token: ${{ secrets.SLACK_BOT_TOKEN }}
+        path: app/build/outputs/apk/debug/app-debug.apk
+        channel: testing
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
