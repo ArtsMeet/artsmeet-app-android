@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "180419526837",
+    "project_id": "arts-meet",
+    "storage_bucket": "arts-meet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180419526837:android:750108fb31c29c8cdffefc",
+        "android_client_info": {
+          "package_name": "com.artsmeet.app.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180419526837-cag0a520sj7mn3dnav72gs3eg3705gr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4sCudE0gXqRWaMtctDabJ6p4sMCIDX5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180419526837-cag0a520sj7mn3dnav72gs3eg3705gr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
