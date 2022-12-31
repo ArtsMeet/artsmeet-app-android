@@ -1,0 +1,45 @@
+name: Send notification on slack
+
+on:
+  push:
+    branches: [ "master", "develop"]
+
+jobs:
+  notify-slack:
+  
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Set COMMIT_MESSAGE
+      run: echo "COMMIT_MESSAGE=${{ github.event.head_commit.message }}" | tr '\n' ' ' >> $GITHUB_ENV
+    - name: Slack Notification on SUCCESS
+      if: success()
+      uses: tokorom/action-slack-incoming-webhook@main
+      env:
+        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
+      with:
+        text: "${{github.event.commits.length}} commits pushed to the branch."
+        attachments: |
+          [
+            {
+              "color": "good",
+              "author_name": "${{ github.actor }}",
+              "author_icon": "${{ github.event.sender.avatar_url }}",
+              "fields": [
+                {
+                  "title": "Commit Message",
+                  "value": "${{ github.event.head_commit.message }}"
+                },
+                {
+                  "title": "GitHub Actions URL",
+                  "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                },
+                {
+                  "title": "Compare URL",
+                  "value": "${{ github.event.compare }}"
+                }
+              ]
+            }
+          ]
+       
+  
