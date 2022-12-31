@@ -1,0 +1,20 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "master", "develop"]
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  notify-slack:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL_DEV }} 
+     
