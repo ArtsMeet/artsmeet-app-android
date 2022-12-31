@@ -19,7 +19,7 @@
             app:layout_constraintBottom_toTopOf="@+id/materialButton2"
             app:layout_constraintEnd_toEndOf="@+id/materialButton2"
             android:layout_marginBottom="@dimen/dimen_15dp"
-            style="@style/ArtsMeetOutlinedButton"
+            style="@style/ArtsMeetFilledButton"
             app:layout_constraintStart_toStartOf="@+id/materialButton2" />
 
         <com.google.android.material.button.MaterialButton
@@ -27,7 +27,7 @@
             android:layout_width="@dimen/dimen_0dp"
             android:layout_height="@dimen/dimen_52dp"
             android:layout_marginBottom="@dimen/dimen_15dp"
-            style="@style/ArtsMeetOutlinedButton"
+            style="@style/ArtsMeetFilledButton"
             app:layout_constraintBottom_toTopOf="@+id/materialButton"
             app:layout_constraintEnd_toEndOf="@+id/materialButton"
             app:layout_constraintStart_toStartOf="@+id/materialButton" />
