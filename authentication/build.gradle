@@ -1,22 +1,21 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    namespace 'com.artsmeet.app.android'
+    namespace 'com.artsmeet.app.authentication'
     compileSdk versions.compile_sdk
 
     defaultConfig {
-        applicationId "com.artsmeet.app.android"
         minSdk 21
         targetSdk versions.target_sdk
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -48,12 +47,10 @@ dependencies {
     implementation ktx.core_ktx
     implementation androidx.appCompat
     implementation androidx.material
-    implementation androidx.constraintLayout
     implementation androidx.navigation_ktx
     implementation androidx.navigation_ui_ktx
+    implementation project(path: ':base')
     testImplementation test.junit_test
-    implementation project(path : ':authentication')
-    implementation project(path : ':base')
     //Hilt
     implementation hilt_dagger.hilt_lib
     kapt hilt_dagger.hilt_compiler
