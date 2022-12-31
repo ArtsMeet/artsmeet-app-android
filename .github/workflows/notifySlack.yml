@@ -1,0 +1,21 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "master", "develop"]
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  notify-slack:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
+      if: always()
