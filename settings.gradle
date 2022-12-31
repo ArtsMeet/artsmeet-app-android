@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Arts Meet"
 include ':app'
 include ':authentication'
-include ':base'
+include ':core'
+include ':splash'

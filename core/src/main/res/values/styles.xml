@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ArtsMeetOutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/blue_500</item>
+        <item name="strokeWidth">@dimen/dimen_2dp</item>
+    </style>
+
+    <style name="ArtsMeetFilledButton" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/blue_600</item>
+        <item name="cornerRadius">@dimen/dimen_26dp</item>
+    </style>
+
+</resources>
