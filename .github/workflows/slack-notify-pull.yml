@@ -1,8 +1,8 @@
-  name Notify on slack
+  name: Notify on slack
 
   on:
     pull_request:
-      branches: [ "master","develop" ]
+      branches: [ "master", "develop"]
 
     jobs:
       notify-on-slack:
