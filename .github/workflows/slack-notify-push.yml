@@ -18,7 +18,7 @@ jobs:
       env:
         INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
       with:
-        text: "${{github.event.commits.length}} commits pushed to the branch."
+        text: "${{github.event.size}} commits pushed to the branch."
         attachments: |
           [
             {
