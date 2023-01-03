@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.artsmeet.app.core.ArtsMeet
 import com.artsmeet.app.core.database.base.BaseRoomDatabase
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -72,4 +74,6 @@ fun Fragment.toastLong(message: String){
         Toast.LENGTH_LONG
     ).show()
 }
+
+fun AuthResult.isLoggedIn() = user != null
 

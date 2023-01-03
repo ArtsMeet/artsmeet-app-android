@@ -5,6 +5,10 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+def keysPropertiesFile = rootProject.file("keys.properties")
+def keysProperties = new Properties()
+keysProperties.load(new FileInputStream(keysPropertiesFile))
+
 android {
     namespace 'com.artsmeet.app.authentication'
     compileSdk versions.compile_sdk
@@ -15,6 +19,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField("String","GOOGLE_OAUTH_CLIENT_KEY",keysProperties['GOOGLE_OAUTH_CLIENT_KEY'])
+
     }
 
     buildTypes {
@@ -48,7 +55,9 @@ dependencies {
     implementation androidx.material
     implementation androidx.navigation_ktx
     implementation androidx.navigation_ui_ktx
+    implementation google.gms
     implementation project(path: ':core')
+
     testImplementation test.junit_test
     //Hilt
     implementation hilt_dagger.hilt_lib

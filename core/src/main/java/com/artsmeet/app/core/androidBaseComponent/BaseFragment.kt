@@ -1,9 +1,11 @@
 package com.artsmeet.app.core.androidBaseComponent
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -82,4 +84,11 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel>(
     open fun observe(vm:VM) {}
 
     open fun observeForever(vm: VM){}
+
+    protected fun<T> ActivityResultLauncher<T>.start(
+         launchParams: T? = null
+    ):Activity?{
+        launch(launchParams)
+        return this@BaseFragment.requireActivity()
+    }
 }

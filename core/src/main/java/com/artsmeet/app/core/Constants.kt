@@ -15,5 +15,6 @@ object Constants {
     const val PROVIDER = "user_provider"
     const val COUNTRY_CODE = "user_country_code"
     const val USER_PHONE_NUMBER = "user_phone_number"
+    const val USER_INFO = "user_data.json"
 
 }

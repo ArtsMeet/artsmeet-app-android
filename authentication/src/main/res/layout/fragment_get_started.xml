@@ -14,20 +14,27 @@
             />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/email_sign_in_btn"
             android:layout_width="@dimen/dimen_0dp"
             android:layout_height="@dimen/dimen_52dp"
-            app:layout_constraintBottom_toTopOf="@+id/materialButton2"
-            app:layout_constraintEnd_toEndOf="@+id/materialButton2"
+            app:layout_constraintBottom_toTopOf="@+id/google_sign_in_btn"
+            app:layout_constraintEnd_toEndOf="@+id/google_sign_in_btn"
             android:layout_marginBottom="@dimen/dimen_15dp"
+            android:text="@string/sign_in_with_email"
+            app:icon="@drawable/ic_baseline_email_24"
+            app:iconTint="@null"
             style="@style/ArtsMeetFilledButton"
-            app:layout_constraintStart_toStartOf="@+id/materialButton2" />
+            app:layout_constraintStart_toStartOf="@+id/google_sign_in_btn" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton2"
+            android:id="@+id/google_sign_in_btn"
             android:layout_width="@dimen/dimen_0dp"
             android:layout_height="@dimen/dimen_52dp"
             android:layout_marginBottom="@dimen/dimen_15dp"
             style="@style/ArtsMeetFilledButton"
+            app:icon="@drawable/googleg_standard_color_18"
+            android:text="@string/sign_in_with_google"
+            app:iconTint="@null"
             app:layout_constraintBottom_toTopOf="@+id/materialButton"
             app:layout_constraintEnd_toEndOf="@+id/materialButton"
             app:layout_constraintStart_toStartOf="@+id/materialButton" />
@@ -42,6 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="@dimen/dimen_20dp"
             app:layout_constraintStart_toStartOf="parent" />
+
 
         <TextView
             android:id="@+id/textView"

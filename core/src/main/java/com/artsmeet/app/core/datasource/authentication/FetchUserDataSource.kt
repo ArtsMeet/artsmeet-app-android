@@ -4,5 +4,5 @@ import com.artsmeet.app.core.model.authentication.User
 
 interface FetchUserDataSource {
 
-    fun fetchUser(userName: String)
+    suspend fun fetchUser(uid: String):User
 }

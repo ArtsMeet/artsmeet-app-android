@@ -3,7 +3,7 @@
 
     <style name="Theme.ArtsMeet.SplashActivity" parent="Theme.ArtsMeet">
         <item name="android:statusBarColor">@color/white</item>
-        <item name="android:windowBackground">@mipmap/ic_launcher</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
 </resources>

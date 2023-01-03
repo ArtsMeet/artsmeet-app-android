@@ -19,10 +19,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding,SplashViewModel>(
 
     override fun observe(vm: SplashViewModel) {
         Settings.isUserAuthenticated.collectNonBlocking {
-            if(it != null)
-                if(!it)
+            if(it != null) {
+                if (!it)
                     authenticationActivity.start().finish()
-            else
+            } else
                 authenticationActivity.start().finish()
         }
     }

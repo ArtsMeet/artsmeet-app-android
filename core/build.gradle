@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
 android {
@@ -15,6 +16,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
     }
 
     buildTypes {
@@ -49,8 +51,12 @@ dependencies {
     implementation firebase.auth
     implementation androidx.room
     kapt androidx.room_compiler
+
+    implementation jetbrains.serialization
     implementation androidx.datastore_pref
+    implementation androidx.datastore
     implementation firebase.rdb
+    implementation google.gms
     //Hilt
     implementation hilt_dagger.hilt_lib
     kapt hilt_dagger.hilt_compiler
