@@ -1,35 +1,53 @@
 package com.artsmeet.app.core.androidBaseComponent
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.registerForActivityResult
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
+import androidx.datastore.dataStore
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.artsmeet.app.core.Constants
+import com.artsmeet.app.core.datastore.serializers.UserDetailsSerializer
+import com.artsmeet.app.core.ioScope
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlin.reflect.KClass
 
 /**
  * Extend this class to create an activity instead of Android SDK classes
  */
 
-val Context.dataStore by preferencesDataStore(
+val Context.prefDataStore by preferencesDataStore(
     name = Constants.PREFERENCES_NAME
 )
+val Context.userDataStore by dataStore(
+    Constants.USER_INFO,
+    UserDetailsSerializer,
+    scope = CoroutineScope(Dispatchers.IO + Job())
+)
 
-abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>(
+abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel>(
     private val bindingInflater: (LayoutInflater) -> VB,
     private val vmKClass: KClass<VM>
 ) : AppCompatActivity() {
 
     private var binding: VB? = null
 
-    private var viewModel:VM? = null
+    private var viewModel: VM? = null
 
-    companion object{
+    companion object {
         private const val ON_CREATE = "ON_CREATE"
     }
 
@@ -79,17 +97,24 @@ abstract class BaseActivity<VB: ViewDataBinding, VM:BaseViewModel>(
      * It is called after the setupView()
      * @see setupViews
      */
-    open fun observe(vm:VM) {}
+    open fun observe(vm: VM) {}
 
-    open fun observeForever(vm: VM){}
+    open fun observeForever(vm: VM) {}
 
-    fun<T:Any> ActivityResultLauncher<T>.start(
-        launchParams:T? = null
-    ):AppCompatActivity {
+    fun <T : Any?> ActivityResultLauncher<T>.start(
+        launchParams: T? = null
+    ): AppCompatActivity {
         launch(launchParams)
         return this@BaseActivity
     }
 
+    @JvmName("startT")
+    fun <T : Any> ActivityResultLauncher<T>.start(
+        launchParams: T? = null
+    ): AppCompatActivity {
+        launch(launchParams)
+        return this@BaseActivity
+    }
     /**
      * Use this as base class for any data class passed as parameter
      * to ensure type safety

@@ -1,5 +1,7 @@
 package com.artsmeet.app.core.androidBaseComponent
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.artsmeet.app.core.usecase.base.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,6 +15,8 @@ import javax.inject.Inject
 open class BaseViewModel @Inject constructor(): ViewModel() {
 
     private val ioScope = CoroutineScope(Dispatchers.IO + Job())
+    protected val _loading = MutableLiveData(false)
+    val loading:LiveData<Boolean> = _loading
 
     protected fun call(useCase:BaseUseCase,onSuccess:() -> Unit){
         ioScope.launch {
@@ -21,9 +25,9 @@ open class BaseViewModel @Inject constructor(): ViewModel() {
         }
     }
 
-    protected fun <T:BaseUseCaseInputParams> callWithInput(
-        useCase: BaseUseCaseWithInput<T>,
-        useCaseInputParams: T,
+    protected fun <I:BaseUseCaseInputParams> callWithInput(
+        useCase: BaseUseCaseWithInput<I>,
+        useCaseInputParams: I,
         onSuccess: () -> Unit
     ){
         ioScope.launch {
@@ -32,9 +36,9 @@ open class BaseViewModel @Inject constructor(): ViewModel() {
         }
     }
 
-    protected fun <T:BaseUseCaseOutput> callWithOutput(
-        useCase: BaseUseCaseWithOutput<T>,
-        onSuccess: (T) -> Unit
+    protected fun <O:NetworkResponse> callWithOutput(
+        useCase: BaseUseCaseWithOutput<O>,
+        onSuccess: (O) -> Unit
     ){
         ioScope.launch {
             onSuccess.invoke(
@@ -43,9 +47,9 @@ open class BaseViewModel @Inject constructor(): ViewModel() {
         }
     }
 
-    protected fun <T:BaseUseCaseInputParams,O:BaseUseCaseOutput> callWithInputOutput(
-        useCaseWithInputOutput: BaseUseCaseWithInputOutput<T,O>,
-        useCaseInputParams: T,
+    protected fun <I:BaseUseCaseInputParams,O:NetworkResponse> callWithInputOutput(
+        useCaseWithInputOutput: BaseUseCaseWithInputOutput<I,O>,
+        useCaseInputParams: I,
         onSuccess: (O) -> Unit
     ){
         ioScope.launch {

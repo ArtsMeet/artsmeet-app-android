@@ -3,10 +3,9 @@ package com.artsmeet.app.core
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.core.stringPreferencesKey
-import com.artsmeet.app.core.androidBaseComponent.dataStore
-import com.artsmeet.app.core.model.authentication.User
+import com.artsmeet.app.core.androidBaseComponent.prefDataStore
+import com.artsmeet.app.core.androidBaseComponent.userDataStore
+import com.artsmeet.app.core.extension.collectNonBlocking
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -20,11 +19,20 @@ val ioScope = CoroutineScope(Dispatchers.IO + Job())
 object Settings {
 
     var isUserAuthenticated
-        get() = ArtsMeet.applicationContext.dataStore.getValue(Preferences.IS_USER_AUTHENTICATED)
-        set(value) = ArtsMeet.applicationContext.dataStore.setValue(
+        get() = ArtsMeet.applicationContext.prefDataStore.getValue(Preferences.IS_USER_AUTHENTICATED)
+        set(value) = ArtsMeet.applicationContext.prefDataStore.setValue(
             Preferences.IS_USER_AUTHENTICATED,
             value
         )
+
+    var userData
+        get() = ArtsMeet.applicationContext.userDataStore.data
+        set(value) = value.collectNonBlocking { user ->
+            ArtsMeet.applicationContext.userDataStore.updateData {
+                user
+            }
+        }
+
 
 }
 
@@ -49,7 +57,7 @@ fun <T : Any> DataStore<androidx.datastore.preferences.core.Preferences>.setValu
 
 object Preferences {
     val IS_USER_AUTHENTICATED = booleanPreferencesKey(Constants.IS_USER_AUTHENTICATED)
-    val USER_DISPLAY_NAME = stringPreferencesKey(Constants.USER_DISPLAY_NAME)
+    /*val USER_DISPLAY_NAME = stringPreferencesKey(Constants.USER_DISPLAY_NAME)
     val USER_NAME = stringPreferencesKey(Constants.USER_NAME)
     val USER_PHONE_NUMBER = stringPreferencesKey(Constants.USER_PHONE_NUMBER)
     val COUNTRY_CODE = stringPreferencesKey(Constants.COUNTRY_CODE)
@@ -57,5 +65,5 @@ object Preferences {
     val PROVIDER = stringPreferencesKey(Constants.PROVIDER)
     val USER_PHOTO_URL = stringPreferencesKey(Constants.USER_PHOTO_URL)
     val USER_FOLLOWERS = intPreferencesKey(Constants.USER_FOLLOWERS)
-    val USER_FOLLOWING = intPreferencesKey(Constants.USER_FOLLOWING)
+    val USER_FOLLOWING = intPreferencesKey(Constants.USER_FOLLOWING)*/
 }

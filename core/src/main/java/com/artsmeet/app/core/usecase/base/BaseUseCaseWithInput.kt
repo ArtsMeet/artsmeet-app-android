@@ -1,6 +1,6 @@
 package com.artsmeet.app.core.usecase.base
 
-abstract class BaseUseCaseWithInput<T:BaseUseCaseInputParams> {
+abstract class BaseUseCaseWithInput<in I:BaseUseCaseInputParams> {
 
-    abstract fun process(input: T)
+    abstract suspend fun process(input: I)
 }

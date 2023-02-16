@@ -2,4 +2,6 @@
     <string name="feed">Feed</string>
     <string name="my_profile">My Profile</string>
     <string name="already_a_user_sign_in">Already a user? Sign in</string>
+    <string name="sign_in_with_google">Sign-in with google</string>
+    <string name="sign_in_with_email">Sign-in with email</string>
 </resources>

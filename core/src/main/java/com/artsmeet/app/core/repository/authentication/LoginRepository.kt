@@ -1,6 +1,8 @@
 package com.artsmeet.app.core.repository.authentication
 
-interface LoginRepository<T:LoginData> {
-    fun login(data: T)
+import com.artsmeet.app.core.usecase.authentication.LoginResponse
+
+interface LoginRepository<T:LoginData>{
+    suspend fun login(data: T): LoginResponse
 }
 interface LoginData

@@ -33,8 +33,8 @@ class AuthenticationActivity : BaseActivity<ActivityAuthenticationBinding,Authen
         navController.graph = navController.navInflater.inflate(navGraph)
     }
 
-    companion object : ActivityResultContract<Boolean,Boolean>(){
-        override fun createIntent(context: Context, input: Boolean): Intent {
+    companion object : ActivityResultContract<Boolean?,Boolean>(){
+        override fun createIntent(context: Context, input: Boolean?): Intent {
             return Intent(context,AuthenticationActivity::class.java)
         }
 
